@@ -1,0 +1,16 @@
+algorithm for finding lanes:
+1. Get image
+2. Store a copy of original image
+3. Convert image to grayscale
+4. Reduce noise with gaussian blur
+5. Apply canny to get the sharp edges (canny works using differentiation of successive image pixels)
+6. Find region of interest in the image in terms of a mask
+7. AND the mask image with canny image to get only the lane portion
+8. Apply HoughLineP with some filters to the resulting image to get the lines present in the image
+9. Iterate through the lines to find the slope and y-intercept of each line'
+10. Create two array of slope and y-intercept and insert the respective iteraed values based
+    on whether the slope is positive or negative to separate left and right lanes
+11. Calculate the average of the two arrays to get the avergae slope and y-intercept of
+    left and right side of the lane
+12. Make two lines for the lane using the average slope and y-intercept and using y1 as inage height and y2 as some value times y1
+13. View the lines in the image
